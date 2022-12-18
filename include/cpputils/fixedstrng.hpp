@@ -1,11 +1,9 @@
-#pragma once
+/*#pragma once
+#include "types.hpp"
 
-#include <algorithm>
-#include <string_view>
-
-template<std::size_t S>
+template<u32 S>
 struct FixedString {
-    size_t size {S};
+    u32 size {S};
     char str[S+1] {};
 
     consteval FixedString(char (&str_)[S+1]) {
@@ -21,10 +19,6 @@ struct FixedString {
     }
 
     operator const char*() const {
-        return str;
-    }
-
-    operator std::string_view() const {
         return str;
     }
 
@@ -66,4 +60,4 @@ consteval auto operator+(FixedString<s1> fs, const char (&str1) [s2]) {
 template<std::size_t s1, std::size_t s2>
 consteval auto operator+(const char (&str1) [s2], FixedString<s1> fs) {
     return FixedString<s2-1>(str1) + fs;
-}
+}*/
