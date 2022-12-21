@@ -97,7 +97,7 @@ template<typename... Ts>
 struct TupleSizeImpl<Tuple<Ts...>> : IntegralConstant<sizeof...(Ts)> {};
 
 template<typename T>
-constexpr bool TupleSize = TupleSizeImpl<T>::value;
+constexpr u32 TupleSize = TupleSizeImpl<T>::value;
 
 // TuepleElement no error
 template<u32 I, typename T>

@@ -1,15 +1,9 @@
 #pragma once
 #include "types.hpp"
 #include "utility.hpp"
+#include <cstring>
+#include <cstdlib>
 
-
-extern "C" {
-    void* memcpy(void *, const void *, u64);
-    void* malloc(u64);
-    void* realloc(void *, u64);
-    int snprintf(char *, u64, const char *, ...);
-    int free(void *);
-};
 
 inline void* operator new  (u64 count, void* ptr ) {
     return ptr;
@@ -26,6 +20,7 @@ constexpr u32 cstrlen(const char* str) {
 
 template<typename T>
 concept IsCopyable = __is_trivially_copyable(T);
+
 
 template<typename T>
 struct Allocator {
@@ -81,9 +76,9 @@ struct Allocator {
     }
 
     inline void free() {
+        ::free(m_data);
         m_capacity = 0;
         m_data = 0;
-        ::free(m_data);
     }
 
     template<typename... Ts>

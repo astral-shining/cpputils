@@ -36,7 +36,7 @@ struct String {
     Allocator<char> m_data;
 
     inline String() {
-        clear();
+        
     }
 
     inline String(const char* str) : m_data(cstrlen(str)+1) {
